@@ -1,0 +1,8 @@
+button {
+	border-radius: toRem(8);
+	border: toRem(1) $mainColor solid;
+	color: $mainColor;
+	padding: toRem(10) toRem(20);
+	background-color: #ffffff;
+	font-size: toRem(16);
+}

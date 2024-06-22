@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+	"baseUrl": "./src",
+	"pa ths": {
+		"@app": ["./app"],
+		"@app/*": ["./app/*"],
+
+		"@pages": ["./pages"],
+		"@pages/*": ["./pages/*"],
+
+		"@widgets": ["./widgets"],
+		"@widgets/*": ["./widgets/*"],
+
+		"@features": ["./features"],
+		"@features/*": ["./features/*"],
+
+		"@entities": ["./entities"],
+		"@entities/*": ["./entities/*"],
+
+		"@shared": ["./shared"],
+		"@shared/*": ["./shared/*"]
+		}
+	},
+	"include": ["src"],
+	"references": [{ "path": "./jsconfig.node.json" }]
+}
