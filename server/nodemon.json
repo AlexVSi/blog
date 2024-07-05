@@ -1,6 +1,11 @@
 {
+	"ignore": [
+		"**/*.test.ts",
+		"**/*.spec.ts",
+		".git",
+		"node_modules"
+	],
 	"watch": ["src"],
-	"ext": "ts,json",
-	"ignore": ["src/**/*.spec.ts"],
-	"exec": "ts-node --esm ./src/index.ts"
+	"exec": "ts-node -r tsconfig-paths/register",
+	"ext": ".ts,.js,.yaml"
 }

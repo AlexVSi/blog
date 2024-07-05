@@ -1,6 +1,6 @@
 import Router from 'express'
 const router = Router()
-import postController from '../controllers/postController.js'
+import postController from '../controllers/postController'
 
 router.get('/', postController.getAllPosts)
 router.get('/:id', postController.getPostById)

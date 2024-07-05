@@ -1,10 +1,8 @@
-import dotenv from "dotenv";
-dotenv.config();
-
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import sequelize from './db.js'
-import router from './routes/index.js'
+import sequelize from './db'
+import router from './routes/index'
 
 const PORT = process.env.PORT || 6000;
 
@@ -18,7 +16,7 @@ const startApp = async (): Promise<void> => {
 		await sequelize.authenticate()
 		await sequelize.sync()
 		await app.listen(PORT, () => console.log('Server start on port', PORT))
-	} catch(e) {
+	} catch (e) {
 		console.log(e)
 	}
 }

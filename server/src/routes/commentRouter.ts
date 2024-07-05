@@ -1,6 +1,6 @@
 import Router from 'express'
 const router = Router()
-import commentController from '../controllers/commentController.js'
+import commentController from '../controllers/commentController'
 
 router.get('/:postId', commentController.getAllCommentsToPost)
 router.post('/add/:postId', commentController.addComment)

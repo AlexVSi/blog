@@ -1,9 +1,8 @@
 import { Router } from 'express'
 const router = Router()
-import userRouter from './userRouter.js'
-import postRouter from './postRouter.js'
-import commentRouter from './commentRouter.js'
-
+import userRouter from './userRouter'
+import postRouter from './postRouter'
+import commentRouter from './commentRouter'
 
 router.use('/users', userRouter)
 router.use('/posts', postRouter)

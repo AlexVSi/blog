@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import postServices from 'services/postServices.js'
+import postServices from '../services/postServices'
 
 class PostController {
-	async getAllPosts(req, res) {
+	async getAllPosts(req: Request, res: Response) {
 		try {
 			const posts = await postServices.getAllPosts()
 			return res.json(posts)
@@ -11,16 +11,16 @@ class PostController {
 		}
 	}
 
-	async getPostById(req, res) {
+	async getPostById(req: Request, res: Response) {
 		try {
-			const post = await postServices.getPostById(req.params.id)
+			const post = await postServices.getPostById(+req.params.id)
 			return res.json(post)
 		} catch(e) {
 			return res.status(500).json(e)
 		}
 	}
 
-	async addPost(req, res) {
+	async addPost(req: Request, res: Response) {
 		try {
 			const newPost = await postServices.addPost(req.body)
 			return res.json(newPost)
@@ -29,7 +29,7 @@ class PostController {
 		}
 	}
 
-	async updatePost(req, res) {
+	async updatePost(req: Request, res: Response) {
 		try {
 			const updatedPost = await postServices.updatePost(req.body)
 			return updatedPost
@@ -37,9 +37,9 @@ class PostController {
 			return res.status(500).json(e)
 		}
 	}
-	async deletePost(req, res) {
+	async deletePost(req: Request, res: Response) {
 		try {
-			const deletedPost = await postServices.deletePost(req.params.id)
+			const deletedPost = await postServices.deletePost(+req.params.id)
 			return deletedPost
 		} catch(e) {
 			return res.status(500).json(e)

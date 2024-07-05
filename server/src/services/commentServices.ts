@@ -1,4 +1,4 @@
-import { Comments } from '../models/models.js'
+import { Comments } from '../models/models'
 class CommentServices {
 	async getAllCommentsToPost(postId: number) {
 		const comments = await Comments.findAll({

@@ -1,11 +1,13 @@
-import { Users } from '../models/models.js'
+import { Users } from '../models/models'
+import { IUser } from '../interfaces'
+
 class UserServices {
 	async getAllUsers() {
 		const users = await Users.findAll()
 			return users
 		}
 
-	async getUserById(id) {
+	async getUserById(id: number) {
 		const user = await Users.findAll({
 			where: {
 				id: id
@@ -14,7 +16,7 @@ class UserServices {
 		return user[0]
 	}
 
-	async addUser(body) {
+	async addUser(body: IUser) {
 		const newUser = await Users.create({
 			id: null,
 			firstname: body.firstname,
@@ -25,7 +27,7 @@ class UserServices {
 		return newUser
 	}
 
-	async updateUser(id, body) {
+	async updateUser(id: number, body: IUser) {
 		const updatedUser = await Users.update({
 			firstname: body.firstname,
 			lastname: body.lastname,
@@ -39,7 +41,7 @@ class UserServices {
 		return updatedUser
 	}
 
-	async deleteUser(id) {
+	async deleteUser(id: number) {
 		const deletedUser = await Users.destroy({
 			where: {
 				id: id

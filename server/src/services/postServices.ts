@@ -1,11 +1,13 @@
-import { Posts } from '../models/models.js'
+import { Posts } from '../models/models'
+import { IPost } from './../interfaces'
+
 class PostsServices {
 	async getAllPosts() {
 		const posts = await Posts.findAll()
 		return posts
 	}
 
-	async getPostById(id) {
+	async getPostById(id: number) {
 		const post = await Posts.findAll({
 			where: {
 				id: id
@@ -14,7 +16,7 @@ class PostsServices {
 		return post[0]
 	}
 
-	async addPost(body) {
+	async addPost(body: IPost) {
 		const newPost = await Posts.create({
 			id: null,
 			title: body.title,
@@ -24,19 +26,19 @@ class PostsServices {
 		return newPost
 	}
 
-	async updatePost(body) {
+	async updatePost(body: IPost) {
 		const updatedPost = await Posts.update({
 			title: body.title,
 			description: body.description,
 		}, {
 			where: {
-				id: id
+				id: body.id
 			}
 		})
 		return updatedPost
 	}
 
-	async deletePost() {
+	async deletePost(id: number) {
 		const deletedPost = await Posts.destroy({
 			where: {
 				id: id
