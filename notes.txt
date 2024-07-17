@@ -1,2 +1,6 @@
 "dev": "export NODE_ENV=development TS_NODE_BASEURL=./dist && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"tsc -w\" \"nodemon\""
 "exec": "tsc && node -r tsconfig-paths/register -r ts-node/register build/index.js",
+Option 'module' must be set to 'NodeNext' when option 'moduleResolution' is set to 'NodeNext'.ts
+"experimentalDecorators": true,
+"skipLibCheck": true,
+"forceConsistentCasingInFileNames": true

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import postServices from '../services/postServices'
+import postServices from './../services/postServices'
 
 class PostController {
 	async getAllPosts(req: Request, res: Response) {

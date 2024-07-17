@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 	"baseUrl": "./src",
-	"pa ths": {
+	"paths": {
 		"@app": ["./app"],
 		"@app/*": ["./app/*"],
 

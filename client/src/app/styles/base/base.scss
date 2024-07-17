@@ -1,0 +1,68 @@
+// * {
+// 	line-height: 140%;
+// }
+
+// html {
+// 	scroll-behavior: smooth;
+// }
+// body {
+// 	font-family: $fontFamily;
+// 	font-size: $fontSize;
+// }
+// body.lock {
+// 	overflow: hidden;
+// }
+// .wrapper {
+// 	min-height: 100%;
+// 	overflow: hidden;
+// /*Чтобы прибить footer к низу*/
+// 	display: flex;
+// 	flex-direction: column;
+// }
+
+.container {
+	max-width: toRem($maxWidthContainer); /*1140 + 30px (отступы безопасности)*/
+	margin: 0 auto;
+	padding: 0 toRem(15); /*Отступ безопасности*/
+}
+
+// main {
+// 	padding-top: toRem(90);
+// 	flex: 1 1 auto;
+// }
+
+h1 {
+	font-weight: 700;
+	font-size: toRem(35);
+	// color: $fontColorLight;
+}
+
+h2 {
+	font-weight: 700;
+	font-size: toRem(26);
+	// padding: toRem(30) 0;
+}
+p, li {
+	font-size: $fontSize;
+}
+
+.formText {
+	font-weight: 500;
+	font-size: $fontSize;
+}
+
+// PC ====================================================================
+@media(max-width: $pc) {
+
+}
+// TABLET =================================================================
+@media(max-width: $tablet) {
+
+}
+// MOBILE =================================================================
+@media(max-width: $mobile) {
+}
+// MOBILE_SMALL ===========================================================
+@media(max-width: $mobileSmall) {
+
+}
