@@ -1,8 +1,8 @@
 import React from 'react';
 import { IButton } from './IButton';
-import classes from './Button.module.scss'
-export const Button: React.FC<IButton> = ({props, children}) => {
+import './Button.module.scss'
+export const Button: React.FC<IButton> = ({onClick, children}) => {
 	return (
-		<button className={classes.button} {...props}>{children}</button>
+		<button className='button' onClick={onClick}>{children}</button>
 	)
 }

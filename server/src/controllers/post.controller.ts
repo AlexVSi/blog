@@ -1,10 +1,12 @@
 import { Request, Response } from 'express'
-import postServices from './../services/postServices'
+import postServices from '../services/post.service'
+import { IPost } from 'interfaces'
+
 
 class PostController {
 	async getAllPosts(req: Request, res: Response) {
 		try {
-			const posts = await postServices.getAllPosts()
+			const posts: IPost[] = await postServices.getAllPosts()
 			return res.json(posts)
 		} catch(e) {
 			return res.status(500).json(e)
@@ -13,7 +15,7 @@ class PostController {
 
 	async getPostById(req: Request, res: Response) {
 		try {
-			const post = await postServices.getPostById(+req.params.id)
+			const post = await postServices.getPostById(req.params.id)
 			return res.json(post)
 		} catch(e) {
 			return res.status(500).json(e)
@@ -39,7 +41,7 @@ class PostController {
 	}
 	async deletePost(req: Request, res: Response) {
 		try {
-			const deletedPost = await postServices.deletePost(+req.params.id)
+			const deletedPost = await postServices.deletePost(req.params.id)
 			return deletedPost
 		} catch(e) {
 			return res.status(500).json(e)

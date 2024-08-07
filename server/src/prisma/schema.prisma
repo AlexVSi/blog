@@ -1,0 +1,55 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id             String    @id @default(uuid()) @db.Uuid
+    firstname      String
+    lastname       String
+    email          String    @unique
+    password       String
+    isActivated    Boolean
+    activationLink String    @unique
+    role           Role      @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    roleId         String    @db.Uuid
+    posts          Post[]
+    coments        Comment[]
+    tokens         Token[]
+}
+
+model Post {
+    id          String    @id @default(uuid()) @db.Uuid
+    title       String
+    description String
+    user        User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    userId      String    @db.Uuid
+    comments    Comment[]
+}
+
+model Comment {
+    id      String   @id @default(uuid()) @db.Uuid
+    comment String
+    date    DateTime
+    user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    userId  String   @db.Uuid
+    post    Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    postId  String   @db.Uuid
+}
+
+model Role {
+    id    String @id @default(uuid()) @db.Uuid
+    role  String
+    users User[]
+}
+
+model Token {
+    id           String @id @default(uuid()) @db.Uuid
+    refreshToken String @unique
+    user         User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    userId       String @db.Uuid
+}

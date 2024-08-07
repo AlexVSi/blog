@@ -1,6 +1,7 @@
-import classes from './Comment.module.scss';
+import React, { FC } from 'react';
+import './Comment.module.scss';
 
-export const Comment = () => {
+export const Comment: FC = () => {
 	return (
 	<>
 	</>

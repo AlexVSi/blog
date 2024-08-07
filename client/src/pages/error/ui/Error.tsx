@@ -1,5 +1,5 @@
-import React from "react"
-import classes from "./Error.module.scss";
+import React, { FC } from 'react';
+import "./Error.module.scss";
 
 export const Error = () => {
 	return (

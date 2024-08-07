@@ -1,4 +1,4 @@
 export interface IButton {
-	props: object,
-	children: string
+	children: string,
+	onClick?: () => void
 }

@@ -1,22 +1,24 @@
 import { Post } from '@entities/post/ui/Post'
-import classes from './PostsList.module.scss'
-import { useState } from 'react'
+import { IPost } from '@entities/post/ui/IPost'
+import './PostsList.module.scss'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export const PostsList = () => {
-	const [postsList, setPostsList] = useState([])
-	const [error, setError] = useState(false)
+	const [postsList, setPostsList] = useState<IPost[]>([])
+	const [error, setError] = useState<Boolean>(false)
+
+	useEffect(() => {
+		getPosts()
+	}, [])
 
 	async function getPosts() { 
-		const response = await axios.get("http://127.0.0.1:8000/api/posts/")
-			.catch((e) => {
-				console.log(e)
-				setError(true)
-			})
+		const response = await axios.get<IPost[]>("http://127.0.0.1:8000/api/posts/")
 		setPostsList(response.data)
+		if (response.status != 200) {
+			setError(true)
+		}
 	}
-
-	getPosts()
 
 	if (error) {
 		return (
@@ -24,11 +26,11 @@ export const PostsList = () => {
 		)
 	} 
 	return (
-		<div className={`${classes.posts__container} container`}>
-			<div className={classes.post__block}>
+		<div className='posts__container container'>
+			<div className='post__block'>
 				{postsList.map((item, index) => {
 					return (
-						<Post title={item.title} description={item.description} key={item.id}/>
+						<Post title={item.title} description={item.description} key={index}/>
 					)
 				})}
 			</div>

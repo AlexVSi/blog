@@ -22,8 +22,9 @@ header {
 	a.active {
 		color: #86abff;
 	}
-	img {
-		width: toRem(40);
-		height: toRem(40);
-	}
+}
+
+.login-img {
+	width: toRem(40);
+	height: toRem(40);
 }

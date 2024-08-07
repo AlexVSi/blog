@@ -1,9 +1,12 @@
 interface IUser {
-	id?: number,
+	id: string
 	firstname: string
 	lastname: string
-	login: string
+	email: string
 	password: string
+	isActivated?: boolean
+	activationLink?: string
+	roleId: string
 }
 
 export default IUser

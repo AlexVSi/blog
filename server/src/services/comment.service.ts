@@ -1,9 +1,11 @@
-import { Comments } from '../models/models'
+import { prisma } from "prisma"
+
+
 class CommentServices {
-	async getAllCommentsToPost(postId: number) {
-		const comments = await Comments.findAll({
+	async getAllCommentsToPost(postId: string) {
+		const comments = await prisma.comment.findMany({
 			where: {
-				PostId: postId
+				postId: postId
 			}
 		})
 		return comments

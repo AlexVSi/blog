@@ -1,4 +1,5 @@
-import classes from './Account.module.scss';
+import React, { FC } from 'react';
+import './Account.module.scss';
 
 export const Account = () => {
 	return (
