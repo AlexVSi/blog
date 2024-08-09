@@ -8,7 +8,7 @@ class PostController {
 		try {
 			const posts: IPost[] = await postServices.getAllPosts()
 			return res.json(posts)
-		} catch(e) {
+		} catch (e) {
 			return res.status(500).json(e)
 		}
 	}
@@ -26,7 +26,7 @@ class PostController {
 		try {
 			const newPost = await postServices.addPost(req.body)
 			return res.json(newPost)
-		} catch(e) {
+		} catch (e) {
 			return res.status(500).json(e)
 		}
 	}
@@ -35,7 +35,7 @@ class PostController {
 		try {
 			const updatedPost = await postServices.updatePost(req.body)
 			return updatedPost
-		} catch(e) {
+		} catch (e) {
 			return res.status(500).json(e)
 		}
 	}
@@ -43,7 +43,7 @@ class PostController {
 		try {
 			const deletedPost = await postServices.deletePost(req.params.id)
 			return deletedPost
-		} catch(e) {
+		} catch (e) {
 			return res.status(500).json(e)
 		}
 	}

@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import { v4 } from 'uuid'
 import mailService from './mail.service'
 import tokenService from './token.service'
-import { UserDto } from './../dtos/user.dto'
+import { UserDto } from '../dtos/user.dto'
 import ApiError from 'exceptions/api.error'
 
 
