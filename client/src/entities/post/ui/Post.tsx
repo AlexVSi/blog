@@ -1,17 +1,19 @@
-import React, {FC} from 'react'
-import { Button } from '@shared/ui/button'
-import { IPost } from './IPost'
-import  './Post.module.scss'
+import { FC } from 'react'
+import cl from './Post.module.scss'
+import { Link } from 'react-router-dom'
 
-export const Post: FC<IPost> = ({title, description}) => {
-	return (
-		<div className='post'>
-			<h3 className='titie'>{title}</h3>
-			<div className='description'>{description}</div>
-			<div className='buttons'>
-				<Button>Редактировать</Button>
-				<Button>Удалить</Button>
-			</div>
-		</div>
-	)
+interface PostProps {
+    id: string
+    title: string
+    description: string
+}
+
+export const Post: FC<PostProps> = ({ id, title, description }) => {
+    return (
+        <article className={cl["post"]}>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <Link to={`/posts/${id}`} className={cl["read-more"]}>Узнать больше</Link>
+        </article>
+    )
 }

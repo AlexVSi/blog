@@ -1,14 +1,14 @@
 .post {
-
-}
-
-.titie {
-
-}
-
-.description {
-
-}
-.buttons {
-
+    background-color: #fff;
+    padding: toRem(14);
+    border-radius: toRem(5);
+    box-shadow: 0 toRem(2) toRem(5) #0000001a;
+    margin-bottom: 1rem;
+    h3 {
+        margin-bottom: toRem(7);
+        color: #333;
+    }
+    p {
+        margin-bottom: toRem(7);
+    }
 }

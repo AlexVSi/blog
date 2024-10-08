@@ -1,26 +1,35 @@
 import { secretKey } from "config/config"
 import { Request, Response, NextFunction } from "express"
+import { IPayload } from "interfaces"
 import jwt from 'jsonwebtoken'
 
-const role = (roles: any) => {
-	return function(req: Request, res: Response, next: NextFunction) {
+export const role = (rolesArray: Array<string>) => {
+	return function (req: Request, res: Response, next: NextFunction) {
 		if (req.method == "OPTIONS") {
 			next()
 		}
 		try {
-			const token = req.headers.authorization?.split(' ')[1]
+			const token = req.headers.authorization!.split(' ')[1]
 			if (!token) {
-				return res.status(403).json({message: "Пользователь не авторизован"})
+				return res.status(403).json({ message: "Пользователь не авторизован" })
 			}
-			const {roles: userRoles} = jwt.verify(token, secretKey.secret)
-			let hasRole = false
-			userRoles.array.forEach(element => {
-				
+			const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET!)
+			const userRoles = (<IPayload>userData).roles
+
+			let hasRole = false;
+			rolesArray.forEach(role => {
+				if (userRoles.includes(role)) {
+					hasRole = true
+				}
 			});
+
+			if (!hasRole) {
+				return res.status(403).json({ message: "Нет доступа" })
+			}
+
 			next()
-		} catch(e) {
-			console.log(e)
-			return res.status(403).json({message: "Пользователь не авторизован"})
+		} catch (e) {
+			return res.status(403).json({ message: "Пользователь не авторизован" })
 		}
 	}
 }

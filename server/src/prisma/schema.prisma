@@ -13,10 +13,9 @@ model User {
     lastname       String
     email          String    @unique
     password       String
-    isActivated    Boolean
+    isActivated    Boolean   @default(false)
     activationLink String    @unique
-    role           Role      @relation(fields: [roleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-    roleId         String    @db.Uuid
+    roles          Role[]
     posts          Post[]
     coments        Comment[]
     tokens         Token[]
@@ -26,6 +25,7 @@ model Post {
     id          String    @id @default(uuid()) @db.Uuid
     title       String
     description String
+    content     String    @default("content")
     user        User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     userId      String    @db.Uuid
     comments    Comment[]
@@ -43,7 +43,7 @@ model Comment {
 
 model Role {
     id    String @id @default(uuid()) @db.Uuid
-    role  String
+    role  String @unique
     users User[]
 }
 

@@ -1,5 +1,5 @@
 import IPost from "./IPost";
-import IUser from "./IUser";
+import IUser from "./IUserReg";
 import IComment from "./IComment";
 import { IPayload } from "./IPayload";
 

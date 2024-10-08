@@ -1,0 +1,54 @@
+import PostService from "@entities/post/api/post.service";
+import { IPost } from "@entities/post/model/IPost";
+import { makeAutoObservable } from "mobx";
+
+export default class PostStore {
+    allPosts = {} as IPost[]
+    userPosts = {} as IPost[]
+    post = {} as IPost
+
+    constructor() {
+        makeAutoObservable(this)
+    }
+
+    setAllPosts(posts: IPost[]) {
+        this.allPosts = posts
+    }
+
+    setUserPosts(posts: IPost[]) {
+        this.userPosts = posts
+    }
+
+    setPost(post: IPost) {
+        this.post = post
+    }
+
+    async fetchAllPosts() {
+        try {
+            const response = await PostService.fetchAllPosts()
+            this.setAllPosts(response.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async fetchUserPosts(email: string) {
+        try {
+            const response = await PostService.fetchUserPosts(email)
+            this.setUserPosts(response.data)
+            console.log(response)
+            console.log('user posts:', this.userPosts)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async fetchPostById(id: string){
+        try {
+            const response = await PostService.fetchPostById(id)
+            this.setPost(response.data)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}

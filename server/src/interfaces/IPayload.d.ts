@@ -1,7 +1,8 @@
 interface IPayload {
-	email: string
-	id: string
-	isActivated: boolean
+    id: string
+    email: string
+    roles: string[]
+    isActivated: boolean
 }
 
 export { IPayload }

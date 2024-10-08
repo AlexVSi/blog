@@ -1,0 +1,11 @@
+.textarea {
+    padding: toRem(6);
+    border-radius: toRem(5);
+    border: toRem(1) solid #ccc;
+    margin: toRem(6) 0;
+    transition: 200ms;
+
+    &_incorrect {
+        border: toRem(1) solid #fb6161;
+    }
+}

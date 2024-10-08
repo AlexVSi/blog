@@ -1,6 +1,6 @@
 // Константы ==============================================================
-$fontSize: toRem(22);
-$fontFamily: 'Inter';
+$fontSize: toRem(16);
+$fontFamily: 'Arial', sans-serif;
 
 // Адаптивное свойство ====================================================
 $minWidth: 320;
@@ -15,7 +15,7 @@ $responsiveType: 1;
 
 $bckgColor: #264E5A;
 $mainColor: #4e82fc;
-$bckColor: #86abff;
+$bckColor: #4CAF50;
 
 $fontColorLight: #ffffff;
 $fontColorBlack: #000000;

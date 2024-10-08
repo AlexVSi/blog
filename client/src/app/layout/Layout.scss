@@ -1,25 +1,26 @@
 * {
-	line-height: 140%;
+    line-height: 140%;
 }
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 body {
-	font-family: $fontFamily;
-	font-size: $fontSize;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    background-color: #f4f4f9;
 }
 body.lock {
-	overflow: hidden;
+    overflow: hidden;
 }
 .wrapper {
-	min-height: 100%;
-	overflow: hidden;
+    min-height: 100%;
+    overflow: hidden;
 /*Чтобы прибить footer к низу*/
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-	flex: 1 1 auto;
+    flex: 1 1 auto;
 }

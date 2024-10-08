@@ -1,0 +1,29 @@
+.header {
+    background-color: $bckColor;
+    color: #ffffff;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: toRem(80);
+    .logo {
+        font-size: toRem(22);
+        font-weight: 700;
+    }
+    .menu__list {
+        list-style: none;
+        display: flex;
+        gap: toRem(22);
+        li {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        li:hover {
+            color: #d0e7cf;
+        }
+    }
+}

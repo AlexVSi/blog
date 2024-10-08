@@ -1,8 +1,13 @@
 button {
-	border-radius: toRem(8);
-	border: toRem(1) $mainColor solid;
-	color: $mainColor;
-	padding: toRem(10) toRem(20);
-	background-color: #ffffff;
-	font-size: toRem(16);
+    margin: toRem(6) 0;
+    padding: toRem(10);
+    background-color: $bckColor;
+    color: #ffffff;
+    border: none;
+    border-radius: toRem(5);
+    cursor: pointer;
+    transition: 200ms;
+    &:hover {
+        opacity: 0.9;
+    }
 }

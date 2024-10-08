@@ -1,8 +1,13 @@
-import React from 'react';
-import { IButton } from './IButton';
-import './Button.module.scss'
-export const Button: React.FC<IButton> = ({onClick, children}) => {
-	return (
-		<button className='button' onClick={onClick}>{children}</button>
-	)
+import React, { FC, ReactNode } from 'react';
+import cl from './Button.module.scss'
+
+export interface ButtonProps {
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+    children: ReactNode
+}
+
+export const Button: FC<ButtonProps>= ({ onClick, children }) => {
+    return (
+        <button className={cl['button']} onClick={onClick}>{children}</button>
+    )
 }

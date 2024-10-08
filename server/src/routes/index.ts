@@ -1,11 +1,14 @@
 import { Router } from 'express'
-const router = Router()
-import userRouter from './auth.router'
 import postRouter from './post.router'
 import commentRouter from './comment.router'
+import authRouter from './auth.router'
+import userRouter from './user.router'
 
-router.use('/auth', userRouter)
+const router = Router()
+
+router.use('/auth', authRouter)
 router.use('/posts', postRouter)
 router.use('/comments', commentRouter)
+router.use('/user', userRouter)
 
 export default router;

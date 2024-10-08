@@ -1,13 +1,12 @@
 import Router from 'express'
-const router = Router()
-import userController from '../controllers/auth.controller'
-import { auth } from 'middleware/auth.middleware'
+import authController from '../controllers/auth.controller'
 
-router.get('/all', auth, userController.getAllUsers)
-router.post('/registration/', userController.registration)
-router.get('/activate/:link', userController.activate)
-router.post('/login/', userController.login)
-router.post('/logout/', userController.logout)
-router.get('/refresh/', userController.refresh)
+const router = Router()
+
+router.post('/registration/', authController.registration)
+router.get('/activate/:link', authController.activate)
+router.post('/login/', authController.login)
+router.post('/logout/', authController.logout)
+router.get('/refresh/', authController.refresh)
 
 export default router
