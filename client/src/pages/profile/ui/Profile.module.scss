@@ -1,0 +1,7 @@
+.modal__new-post-send {
+    display: flex;
+    flex-direction: column;
+    h2 {
+        padding-bottom: toRem(30);
+    }
+}
