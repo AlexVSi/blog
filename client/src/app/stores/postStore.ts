@@ -36,8 +36,6 @@ export default class PostStore {
         try {
             const response = await PostService.fetchUserPosts(email)
             this.setUserPosts(response.data)
-            console.log(response)
-            console.log('user posts:', this.userPosts)
         } catch (e) {
             console.log(e)
         }
@@ -47,6 +45,15 @@ export default class PostStore {
         try {
             const response = await PostService.fetchPostById(id)
             this.setPost(response.data)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async createPost(post: IPost) {
+        try {
+            const response = await PostService.createPost(post)
+            this.userPosts.push(post)
         } catch (e) {
             console.log(e);
         }

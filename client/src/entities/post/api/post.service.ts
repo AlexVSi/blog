@@ -15,5 +15,7 @@ export default class PostService {
         return await $api.get<IPost>(`posts/${id}`)
     }
 
-    static async createPost() {}
+    static async createPost(post: IPost): Promise<AxiosResponse<IPost>> {
+        return await $api.post<IPost>(`posts/create`, post)
+    }
 }
