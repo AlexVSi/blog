@@ -1,12 +1,21 @@
-button {
+.button {
     margin: toRem(6) 0;
     padding: toRem(10);
-    background-color: $bckColor;
-    color: #ffffff;
-    border: none;
     border-radius: toRem(5);
     cursor: pointer;
     transition: 200ms;
+
+    &-primary {
+        background-color: $bckColor;
+        color: #ffffff;
+        border: none;
+    }
+
+    &-secondary {
+        border: toRem(2) solid $bckColor;
+        color: $bckColor;
+        background-color: #ffffff;
+    }
     &:hover {
         opacity: 0.9;
     }

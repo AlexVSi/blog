@@ -1,13 +1,20 @@
 import React, { FC, ReactNode } from 'react';
 import cl from './Button.module.scss'
 
-export interface ButtonProps {
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
-    children: ReactNode
+export enum ButtonVariant {
+    Primary = 'primary',
+    Secondary = 'secondary'
 }
 
-export const Button: FC<ButtonProps>= ({ onClick, children }) => {
+export interface ButtonProps {
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+    children: ReactNode
+    type: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+    style?: ButtonVariant
+}
+
+export const Button: FC<ButtonProps>= ({ onClick, children, type = "submit", style = 'primary'}) => {
     return (
-        <button className={cl['button']} onClick={onClick}>{children}</button>
+        <button type={type} className={`${cl['button']} ${cl[`button-${style}`]}`} onClick={onClick}>{children}</button>
     )
 }
