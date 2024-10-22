@@ -1,0 +1,21 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    &-active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.modal__content {
+    padding: toRem(25);
+    background: white;
+    border-radius: toRem(16);
+    min-width: toRem(600);
+}
