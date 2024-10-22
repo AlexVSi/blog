@@ -6,12 +6,14 @@ interface PostProps {
     id: string
     title: string
     description: string
+    email: string
 }
 
-export const Post: FC<PostProps> = ({ id, title, description }) => {
+export const Post: FC<PostProps> = ({ id, title, description, email }) => {
     return (
         <article className={cl["post"]}>
-            <h3>{title}</h3>
+            <p className={cl["email"]}>{email}</p>
+            <h2>{title}</h2>
             <p>{description}</p>
             <Link to={`/posts/${id}`} className={cl["read-more"]}>Узнать больше</Link>
         </article>

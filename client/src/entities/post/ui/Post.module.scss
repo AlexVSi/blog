@@ -4,11 +4,18 @@
     border-radius: toRem(5);
     box-shadow: 0 toRem(2) toRem(5) #0000001a;
     margin-bottom: 1rem;
-    h3 {
+    h2 {
         margin-bottom: toRem(7);
         color: #333;
+        font-size: toRem(20);
+        font-weight: 700;
     }
     p {
         margin-bottom: toRem(7);
     }
+}
+
+.email {
+    font-size: toRem(14);
+    color: #333;
 }

@@ -38,7 +38,7 @@ export const PostsList: FC<PostListProps> = observer(({ email = null }) => {
         <div className='post__block'>
             {postList.map((item, index) => {
                 return (
-                    <Post id={item.id} title={item.title} description={item.description} key={index} />
+                    <Post id={item.id} email={item.user.email} title={item.title} description={item.description} key={index} />
                 )
             })}
         </div>

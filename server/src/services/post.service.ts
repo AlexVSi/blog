@@ -1,10 +1,10 @@
-import { randomUUID } from 'crypto'
 import { IPost } from '../interfaces'
 import { prisma } from 'prisma'
+import ApiError from 'exceptions/api.error'
 
 class PostsServices {
     async getAllPosts() {
-        const posts = await prisma.post.findMany()
+        const posts = await prisma.post.findMany({ include: { user: { select: { email: true } } } })
         return posts
     }
 
@@ -12,14 +12,22 @@ class PostsServices {
         const post = await prisma.post.findUnique({
             where: {
                 id: id
-            }
+            },
+            include: { user: { select: { email: true } } }
         })
         return post
     }
 
     async getUserPosts(email: string) {
         const user = await prisma.user.findUnique({ where: { email: email }, include: { posts: true } })
-        return user?.posts
+        if (!user) {
+            throw ApiError.BadRequest('Пользователь не был найден')
+        }
+        const posts = await prisma.post.findMany({ where: { userId: user.id }, include: { user: { select: { email: true } } } })
+        if (!posts) {
+            throw ApiError.BadRequest('Постов нет')
+        }
+        return posts
     }
 
     async createPost(body: IPost) {

@@ -4,4 +4,7 @@ export interface IPost {
     description: string
     content: string
     userId: string
+    user: {
+        email: string
+    }
 }

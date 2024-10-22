@@ -9,7 +9,7 @@ export enum ButtonVariant {
 export interface ButtonProps {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
     children: ReactNode
-    type: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+    type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     style?: ButtonVariant
 }
 

@@ -14,7 +14,11 @@ export const PostPage: FC = observer(() => {
         title: '',
         description: '',
         content: '',
-        userId: ''})
+        userId: '',
+        user: {
+            email: ''
+        }
+    })
 
     useEffect(() => {
         fetchPost(id!)
@@ -36,6 +40,7 @@ export const PostPage: FC = observer(() => {
         <>
             <div className={cl["post__section"]}>
                 <div className={`${cl["post__container"]} container`}>
+                    <p>{post.user.email}</p>
                     <h2 className={cl["post__title"]}>{post.title}</h2>
                     <p className={cl["post__description"]}>{post.description}</p>
                     <div className={cl["post__content"]}>{post.content}</div>
