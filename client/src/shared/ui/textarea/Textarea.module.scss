@@ -3,8 +3,9 @@
     border-radius: toRem(5);
     border: toRem(1) solid #ccc;
     margin: toRem(6) 0;
+    font-size: toRem(14);
     transition: 200ms;
-
+    min-height: toRem(200);
     &_incorrect {
         border: toRem(1) solid #fb6161;
     }

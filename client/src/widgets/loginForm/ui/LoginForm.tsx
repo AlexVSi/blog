@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react'
 import './LoginForm.module.scss';
 import { Button } from '@shared/ui/button';
 import { Context } from 'main';
-// import cl from './LoginForm.module.scss'
-// import { observer } from 'mobx-react-lite';
 import { Input } from '@shared/ui/input';
 import { useNavigate } from 'react-router-dom';
 import { IncorrectFlag } from '@shared/ui/incorrectFlag';
@@ -28,30 +26,28 @@ export const LoginForm = () => {
     }
 
     return (
-        <form>
+        <form action='' onSubmit={login}>
             {incorrectData && <IncorrectFlag>Неверный логин или пароль</IncorrectFlag>}
-            <label htmlFor="email">Email</label>
             <Input
+                label='Email'
                 onChange={e => setEmail(e.target.value)}
                 value={email}
-                type='text'
+                type='email'
                 name='email'
-                required
                 isIncorrect={incorrectData}
             >
             </Input>
 
-            <label htmlFor="email">Пароль</label>
             <Input
+                label='Пароль'
                 onChange={e => setPassword(e.target.value)}
                 value={password}
                 type='password'
                 name='password'
-                required
                 isIncorrect={incorrectData}
             >
             </Input>
-            <Button onClick={(e: React.FormEvent) => login(e)}>Войти</Button>
+            <Button type='submit'>Войти</Button>
         </form>
     )
 }

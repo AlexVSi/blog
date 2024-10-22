@@ -31,58 +31,53 @@ export const RegForm = () => {
     }
 
     return (
-        <form>
-            <label htmlFor="firstname">Имя</label>
+        <form action='' onSubmit={registration}>
             <Input
+                label='Имя'
                 onChange={e => setUserData({...userData, firstname: e.target.value})}
                 value={userData.firstname}
                 type='text'
                 name='firstname'
-                required
             >
             </Input>
 
-            <label htmlFor="lastname">Фамилия</label>
             <Input
+                label='Фамилия'
                 onChange={e => setUserData({...userData, lastname: e.target.value})}
                 value={userData.lastname}
                 type='text'
                 name='lastname'
-                required
             >
             </Input>
 
-            <label htmlFor="email">Email</label>
             <Input
+                label='Email'
                 onChange={e => setUserData({...userData, email: e.target.value})}
                 value={userData.email}
                 type='email'
                 name='email'
-                required
             >
             </Input>
 
-            <label htmlFor="password">Пароль</label>
             <Input
+                label='Пароль'
                 onChange={e => setUserData({...userData, password: e.target.value})}
                 value={userData.password}
                 type='password'
                 name='password'
-                required
             >
             </Input>
 
-            <label htmlFor="confirmPassword">Подтвердить пароль</label>
             <Input
+                label='Подтвердить пароль'
                 onChange={e => setConfirmPassword(e.target.value)}
                 value={confirmPassword}
                 type='confirmPassword'
                 name='confirmPassword'
-                required
             >
             </Input>
             {!passwordConfirm && <p>Пароли не совпадают</p>}
-            <Button onClick={(e: React.FormEvent) => registration(e)}>Регистрация</Button>
+            <Button type='submit'>Регистрация</Button>
         </form>
     )
 }

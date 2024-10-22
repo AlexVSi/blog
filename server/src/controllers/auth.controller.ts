@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import authService from '../services/auth.service'
-import { log } from 'console'
+
 
 class AuthController {
     async registration(req: Request, res: Response, next: NextFunction) {
         try {
-            const user = await authService.registration(req.body)
-            res.cookie('refreshToken', user.tokens.refreshToken, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
-            return res.json(user)
+            const tokens = await authService.registration(req.body)
+            res.cookie('refreshToken', tokens.refreshToken, { maxAge: 3600000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
+            return res.json(tokens)
         } catch (e) {
             next(e)
         }
@@ -15,9 +15,9 @@ class AuthController {
 
     async login(req: Request, res: Response, next: NextFunction) {
         try {
-            const user = await authService.login(req.body.email, req.body.password)
-            res.cookie('refreshToken', user.tokens.refreshToken, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
-            return res.json(user)
+            const tokens = await authService.login(req.body.email, req.body.password)
+            res.cookie('refreshToken', tokens.refreshToken, { maxAge: 3600000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
+            return res.json(tokens)
         } catch(e) {
             next(e)
         }
@@ -48,9 +48,9 @@ class AuthController {
     async refresh(req: Request, res: Response, next: NextFunction) {
         try {
             const { refreshToken } = req.cookies
-            const user = await authService.refresh(refreshToken)
-            res.cookie('refreshToken', user.tokens.refreshToken, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
-            return res.json(user)
+            const tokens = await authService.refresh(refreshToken)
+            res.cookie('refreshToken', tokens.refreshToken, { maxAge: 3600000, httpOnly: true, secure: true, sameSite: 'none', partitioned: true })
+            return res.json(tokens)
         } catch (e) {
             next(e)
         }

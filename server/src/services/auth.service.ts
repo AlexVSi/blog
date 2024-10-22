@@ -32,10 +32,11 @@ class AuthService {
         })
 
         await mailService.sendActivationMail(body.email, `${process.env.API_URL}/api/activate/${activationLink}`)
-        const userDto = new UserDto({ id: user.id, email: user.email, roles: user.roles.map(role => role.role), isActivated: user.isActivated })
+        // const userDto = new UserDto({ id: user.id, email: user.email, roles: user.roles.map(role => role.role), isActivated: user.isActivated, firstname: user.firstname })
+        const userDto = new UserDto({ ...user, roles: user.roles.map(role => role.role) })
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return { tokens: tokens, user: user }
+        return tokens
     }
 
     async login(email: string, password: string) {
@@ -54,10 +55,10 @@ class AuthService {
         if (!validPassword) {
             throw ApiError.BadRequest('Не верный пароль')
         }
-        const userDto = new UserDto({ id: user.id, email: user.email, roles: user.roles.map(role => role.role), isActivated: user.isActivated })
+        const userDto = new UserDto({ ...user, roles: user.roles.map(role => role.role) })
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return { tokens: tokens, user: userDto }
+        return tokens
     }
 
     async logout(refreshToken: string) {
@@ -105,10 +106,10 @@ class AuthService {
             throw ApiError.BadRequest('Пользователь не найден')
         }
 
-        const userDto = new UserDto({ id: user.id, email: user.email, roles: user.roles.map(role => role.role), isActivated: user.isActivated })
+        const userDto = new UserDto({ ...user, roles: user.roles.map(role => role.role) })
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return { tokens: tokens, user: userDto }
+        return tokens
     }
 }
 

@@ -16,21 +16,20 @@ h2 {
 p, li {
     font-size: $fontSize;
 }
-
-.formText {
-    font-weight: 500;
-    font-size: $fontSize;
+label {
+    margin-top: toRem(14);
+    font-weight: bold;
 }
 
 form {
     display: flex;
     flex-direction: column;
     margin: toRem(20) auto;
-}
-
-label {
-    margin-top: toRem(14);
-    font-weight: bold;
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: toRem(7)
+    }
 }
 
 .form__section {

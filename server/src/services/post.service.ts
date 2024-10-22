@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto'
 import { IPost } from '../interfaces'
 import { prisma } from 'prisma'
 
@@ -21,12 +22,13 @@ class PostsServices {
         return user?.posts
     }
 
-    async addPost(body: IPost) {
+    async createPost(body: IPost) {
         const newPost = await prisma.post.create({
             data: {
                 title: body.title,
                 description: body.description,
-                userId: body.userId
+                content: body.content,
+                userId: body.userId,
             }
         })
         return newPost

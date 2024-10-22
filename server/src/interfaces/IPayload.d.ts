@@ -3,6 +3,7 @@ interface IPayload {
     email: string
     roles: string[]
     isActivated: boolean
+    firstname: string
 }
 
 export { IPayload }

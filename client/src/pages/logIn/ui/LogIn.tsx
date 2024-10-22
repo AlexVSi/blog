@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import cl from './LogIn.module.scss';
 import { LoginForm } from '@widgets/loginForm';
-import { RegForm } from '@widgets/regForm';
 import { Link } from 'react-router-dom';
 
 export const LogIn: FC = (props) => {

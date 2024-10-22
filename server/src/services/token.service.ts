@@ -9,8 +9,8 @@ export interface IGenerateTokens {
 
 class TokenService {
     generateTokens(payload: IPayload): IGenerateTokens {
-        const accessToken: string = jwt.sign(payload, process.env.JWT_ACCESS_SECRET!, { expiresIn: '30m' })
-        const refreshToken: string = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, { expiresIn: '15d' })
+        const accessToken: string = jwt.sign(payload, process.env.JWT_ACCESS_SECRET!, { expiresIn: '1h' })
+        const refreshToken: string = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, { expiresIn: '24h' })
         return {
             accessToken,
             refreshToken

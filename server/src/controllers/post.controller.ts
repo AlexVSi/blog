@@ -31,9 +31,9 @@ class PostController {
         }
     }
 
-    async addPost(req: Request, res: Response) {
+    async createPost(req: Request, res: Response) {
         try {
-            const newPost = await postServices.addPost(req.body)
+            const newPost = await postServices.createPost(req.body)
             return res.json(newPost)
         } catch (e) {
             return res.status(500).json(e)
