@@ -3,9 +3,15 @@
     border-radius: toRem(5);
     border: toRem(1) solid #ccc;
     margin: toRem(6) 0;
+    font-size: toRem(14);
     transition: 200ms;
 
-    &_incorrect {
+    &-incorrect {
         border: toRem(1) solid #fb6161;
     }
+}
+
+label {
+    margin-top: toRem(14);
+    font-weight: bold;
 }
